@@ -1,6 +1,6 @@
 ﻿namespace Umbraco.Caching
 {
-    public class TombolaCacheSettings
+    public class CacheSettings
     {
         public string CacheProviderTypeName { get; set; }
 

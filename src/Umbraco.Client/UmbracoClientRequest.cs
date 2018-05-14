@@ -503,7 +503,7 @@ namespace Umbraco.Client
                 cache.Add(query.UniqueQueryId, mappedTResponse);
 
                 IEnumerable<CustomQueryCacheValue> cq;
-                if (cache.TryGet(TombolaCacheSettings.CUSTOM_QUERY_CACHE_KEY, out cq))
+                if (cache.TryGet(CacheSettings.CUSTOM_QUERY_CACHE_KEY, out cq))
                 {
                     var indexList = cq.ToList();
                     if (indexList.Any(x => x.CustomQueryKey == query.UniqueQueryId.ToString()) == false)
@@ -513,7 +513,7 @@ namespace Umbraco.Client
                             CustomQueryKey = query.UniqueQueryId.ToString(),
                             ContentId = query.AssociatedContentId.ToString()
                         });
-                        cache.Add(TombolaCacheSettings.CUSTOM_QUERY_CACHE_KEY, indexList);
+                        cache.Add(CacheSettings.CUSTOM_QUERY_CACHE_KEY, indexList);
                     }
                 }
                 else
@@ -522,7 +522,7 @@ namespace Umbraco.Client
                     {
                         new CustomQueryCacheValue { CustomQueryKey = query.UniqueQueryId.ToString(), ContentId = query.AssociatedContentId.ToString() }
                     };
-                    cache.Add(TombolaCacheSettings.CUSTOM_QUERY_CACHE_KEY, newCacheIndex);
+                    cache.Add(CacheSettings.CUSTOM_QUERY_CACHE_KEY, newCacheIndex);
                 }
             }
 
@@ -661,7 +661,7 @@ namespace Umbraco.Client
         {
             return (id, content) =>
             {
-                cache.Add(TombolaCacheSettings.GetContentKey(id), content);
+                cache.Add(CacheSettings.GetContentKey(id), content);
                 cache.Add(url, id);
             };
         }
@@ -670,7 +670,7 @@ namespace Umbraco.Client
         {
             return (id, content) =>
             {
-                cache.Add(TombolaCacheSettings.GetContentKey(id), content);
+                cache.Add(CacheSettings.GetContentKey(id), content);
             };
         }
 
@@ -678,7 +678,7 @@ namespace Umbraco.Client
         {
             return (id, content) =>
             {
-                cache.Add(TombolaCacheSettings.GetDescendantsKey(id), content);
+                cache.Add(CacheSettings.GetDescendantsKey(id), content);
             };
         }
 
@@ -686,7 +686,7 @@ namespace Umbraco.Client
         {
             return (id, content) =>
             {
-                cache.Add(TombolaCacheSettings.GetPickerKey(id), content);
+                cache.Add(CacheSettings.GetPickerKey(id), content);
             };
         }
 
@@ -694,7 +694,7 @@ namespace Umbraco.Client
         {
             return (id, content) =>
             {
-                cache.Add(TombolaCacheSettings.GetDescendantsKey(id), content);
+                cache.Add(CacheSettings.GetDescendantsKey(id), content);
                 cache.Add(url, id);
             };
         }
@@ -709,7 +709,7 @@ namespace Umbraco.Client
                     return false;
 
                 RawContentResponse content;
-                if (!cache.TryGet(TombolaCacheSettings.GetContentKey(contentId), out content))
+                if (!cache.TryGet(CacheSettings.GetContentKey(contentId), out content))
                     return false;
 
                 value = content;
@@ -723,7 +723,7 @@ namespace Umbraco.Client
             {
                 value = null;
                 RawContentResponse content;
-                if (!cache.TryGet(TombolaCacheSettings.GetContentKey(id), out content))
+                if (!cache.TryGet(CacheSettings.GetContentKey(id), out content))
                     return false;
 
                 value = content;
@@ -741,7 +741,7 @@ namespace Umbraco.Client
                     return false;
 
                 DescendantIdsResponse content;
-                if (!cache.TryGet(TombolaCacheSettings.GetDescendantsKey(contentId), out content))
+                if (!cache.TryGet(CacheSettings.GetDescendantsKey(contentId), out content))
                     return false;
 
                 value = content;
@@ -755,7 +755,7 @@ namespace Umbraco.Client
             {
                 value = null;
                 DescendantIdsResponse content;
-                if (!cache.TryGet(TombolaCacheSettings.GetDescendantsKey(id), out content))
+                if (!cache.TryGet(CacheSettings.GetDescendantsKey(id), out content))
                     return false;
 
                 value = content;
@@ -769,7 +769,7 @@ namespace Umbraco.Client
             {
                 value = null;
                 DescendantIdsResponse content;
-                if (!cache.TryGet(TombolaCacheSettings.GetPickerKey(id), out content))
+                if (!cache.TryGet(CacheSettings.GetPickerKey(id), out content))
                     return false;
 
                 value = content;

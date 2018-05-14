@@ -6,7 +6,7 @@ namespace Umbraco.Client
     /// <summary>
     /// Various settings used by an umbraco request
     /// </summary>
-    public class UmbracoRequestSettings : ITombolaUmbracoRequestPolicy
+    public class UmbracoRequestSettings : IUmbracoRequestPolicy
     {
         /// <summary>
         /// Dictates how long before an umbraco request will timeout.

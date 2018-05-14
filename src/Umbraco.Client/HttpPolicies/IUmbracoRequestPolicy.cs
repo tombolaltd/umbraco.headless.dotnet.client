@@ -2,7 +2,7 @@ using System;
 
 namespace Umbraco.Client.HttpPolicies
 {
-    internal interface ITombolaUmbracoRequestPolicy
+    internal interface IUmbracoRequestPolicy
     {
         TimeSpan Timeout { get; }
         int NumberOfRetries { get; }
